@@ -1,0 +1,43 @@
+{% extends 'showcase/base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+
+<section class="section has-background-grey-darker">
+  <div class="container">
+    <h1 class="title has-text-primary-light">Contact Me</h1>
+    <p class="subtitle has-text-light">I'd love to hear from you! Reach out via email or GitHub, or use the form below.</p>
+
+    <!-- Optional: Form (if you want one later) -->
+    <div class="box">
+      <form action="#" method="POST">
+        <div class="field">
+          <label class="label has-text-light">Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Your name">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label has-text-light">Email</label>
+          <div class="control">
+            <input class="input" type="email" placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label has-text-light">Message</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Say something..."></textarea>
+          </div>
+        </div>
+
+        <div class="control">
+          <button class="button is-primary">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

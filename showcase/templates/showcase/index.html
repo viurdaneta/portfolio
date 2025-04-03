@@ -1,7 +1,39 @@
 {% extends 'showcase/base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>Welcome to My Portfolio!</h1>
+
+
+
+<section class="hero has-background-grey-darker is-fullheight-with-navbar">
+  <div class="hero-body" style="padding-top: .5rem;">
+    <div class="container">
+      <div class="columns is-vcentered is-variable is-8">
+
+        <div class="column is-half has-text-centered">
+          <figure class="image is-inline-block">
+            <img class="is-rounded" style="width: 450px; height: 450px; object-fit: cover; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);" src="{% static 'showcase/images/colorado.jpeg' %}" alt="Victor Urdaneta">
+          </figure>
+        </div>
+
+        <div class="column is-half has-text-light">
+          <h1 class="title has-text-primary-light">Victor Urdaneta</h1>
+          <p class="subtitle has-text-light">
+            Hello! I’m Victor Urdaneta, a statistics student at UCF passionate about AI and machine learning.
+            I build intelligent, data-driven solutions using Python, NumPy, scikit-learn, and R —
+            combining statistical depth with practical modeling to solve complex problems with clarity and precision.
+          </p>
+          <a href="#" class="button is-white is-medium is-rounded mt-3">
+            <span class="icon"><i class="fas fa-folder-open"></i></span>
+            <span>View my work</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
