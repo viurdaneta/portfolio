@@ -12,31 +12,42 @@
     <!-- Optional: Form (if you want one later) -->
     <div class="box">
       <form action="#" method="POST">
+        {% csrf_token %}
         <div class="field">
-          <label class="label has-text-light">Name</label>
+          <label class="label">Name</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Your name">
+            {{ form.name}}
           </div>
         </div>
 
         <div class="field">
-          <label class="label has-text-light">Email</label>
+          <label class="label ">Email</label>
           <div class="control">
-            <input class="input" type="email" placeholder="your@email.com">
+            {{ form.email }}
           </div>
         </div>
 
         <div class="field">
-          <label class="label has-text-light">Message</label>
+          <label class="label">Subject</label>
           <div class="control">
-            <textarea class="textarea" placeholder="Say something..."></textarea>
+            {{ form.subject }}
           </div>
+          <p class="help">35 characters max</p>
+
+        </div>
+        <div class="field">
+          <label class="label">Message</label>
+          <div class="control">
+            {{ form.message }}
+          </div>
+          <p class="help">500 characters max</p>
         </div>
 
         <div class="control">
-          <button class="button is-primary">Send Message</button>
+          <button class="button is-dark" type="submit">Send Message</button>
         </div>
       </form>
+
     </div>
   </div>
 </section>

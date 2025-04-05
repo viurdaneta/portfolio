@@ -1,0 +1,29 @@
+{% extends 'showcase/base.html' %}
+
+{% block content %}
+<section class="section has-background-grey-darker is-flex is-align-items-start is-justify-content-center" style="min-height: 100vh; padding-top: 6rem;">
+  <div class="card" style="width: 360px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
+
+    <header class="card-header">
+      <p class="card-header-title has-text-success is-justify-content-center" style="width: 100%; justify-content: center;">
+        ✅ Message sent
+      </p>
+    </header>
+
+    <div class="card-content" style="padding: 1.25rem;">
+      <div class="content has-text-centered">
+        <p>Thank you for reaching out to me!</p>
+        <p>I will reply to you as soon as I can.</p>
+      </div>
+    </div>
+
+    <footer class="card-footer ">
+
+      <a href="{% url 'index' %}" class="card-footer-item has-text-grey-darker"><span class="icon">
+          <i class="fas fa-house"></i>
+      </span>Back to Home</a>
+    </footer>
+
+  </div>
+</section>
+{% endblock %}
