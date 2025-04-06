@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-t94)uumx+3=-!@ivly(^jpysqh@&km=&^l8!y37hfx8mlvblem
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'perceptive-truth-production-c940.up.railway.app']
 
 # Application definition
 
