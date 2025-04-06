@@ -3,12 +3,16 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import reverse
 from django.views.generic import TemplateView, FormView
+from . import models
 
 from .forms import ContactForm
 
 # Create your views here.
 def index(request):
     return render(request, 'showcase/index.html')
+def projects(request):
+    projects = models.Project.objects.all()
+    return render(request, 'showcase/projects.html', {'projects': projects})
 
 class success(TemplateView):
     template_name = "showcase/success.html"

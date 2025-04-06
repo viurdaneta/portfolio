@@ -6,6 +6,5 @@ class Project(models.Model):
     description = models.TextField()
     tools = models.CharField(max_length=200)
     url = models.URLField()
-class ProjectImage(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='project_images/')
+    def __str__(self):
+        return self.title
