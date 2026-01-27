@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-t94)uumx+3=-!@ivly(^jpysqh@&km=&^l8!y37hfx8mlvblem
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'perceptive-truth-production-c940.up.railway.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'perceptive-truth-production-c940.up.railway.app',]
 
 # Application definition
 
@@ -51,6 +51,12 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://perceptive-truth-production-c940.up.railway.app",
+    "http://perceptive-truth-production-c940.up.railway.app",
+]
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 ROOT_URLCONF = "portfolio.urls"
