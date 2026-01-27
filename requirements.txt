@@ -1,6 +1,9 @@
 asgiref==3.8.1
 Django==5.2
+django-markdown==0.8.4
+django-markdownx==4.0.9
 gunicorn==23.0.0
+Markdown==3.10
 packaging==24.2
 pillow==11.1.0
 sqlparse==0.5.3

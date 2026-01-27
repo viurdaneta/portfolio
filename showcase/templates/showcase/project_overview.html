@@ -1,0 +1,65 @@
+{% extends 'showcase/base.html' %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block content %}
+
+<section class="section has-background-grey-darker">
+  <div class="container has-text-light">
+     <a href="{% url 'projects' %}" class="is-flex is-align-items-center has-text-link mb-5">
+        <span class="icon mr-2">
+          <i class="fas fa-arrow-left"></i>
+        </span>
+        <span>Back to all projects</span>
+      </a>
+
+    <h1 class="title has-text-primary-light">
+      {{ project.title }}
+    </h1>
+
+    <p class="subtitle has-text-grey">
+      {{ project.tools }}
+    </p>
+
+    <div class="content mb-6">
+      {{ project.content }}
+    </div>
+
+    <hr>
+
+    <h2 class="title is-4 has-text-primary-light mb-5">
+      Project Sections
+    </h2>
+
+    <div class="columns is-multiline">
+      {% for section in sections %}
+        <div class="column is-one-third">
+          <div class="card" style="height: 100%;">
+            <div class="card-content">
+              <p class="title is-5">
+                {{ section.title }}
+              </p>
+
+              <div class="content has-text-grey">
+                {{ section.description}}
+              </div>
+            </div>
+
+            <footer class="card-footer">
+              <a href="{% url 'section_detail' project.slug section.slug %}"
+                 class="card-footer-item has-text-link">
+                View section →
+              </a>
+            </footer>
+          </div>
+        </div>
+      {% empty %}
+        <p class="has-text-grey">No sections added yet.</p>
+      {% endfor %}
+    </div>
+
+
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'showcase/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .content,
+  .content * {
+    color: #363636
+  }
+</style>
+
+<section class="section has-background-light">
+  <div class="container has-text-dark">
+
+    <h1 class="title ">{{ project.title }}</h1>
+    <p class="subtitle ">{{ project.tools }}</p>
+    <a href="{{ project.github }}" target="_blank" class="button is-dark mb-5">
+      <p>View on GitHub</p>
+      <span class="icon">
+          <i class="fab fa-github"></i>
+      </span>
+    </a>
+
+    <div class="content has-text-light">
+      {{ project.content|safe }}
+
+    </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
