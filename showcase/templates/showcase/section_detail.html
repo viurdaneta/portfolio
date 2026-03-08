@@ -33,8 +33,1610 @@
 
     <div class="content">
       {{ section.content|safe }}
+<!--      <p>With a fully engineered and validated driver–season feature matrix in place, the next stage of the analysis is exploratory data analysis (EDA)-->
+<!--        — the systematic examination of the statistical structure underlying the constructed performance indicators.-->
+<!--        While feature engineering defined domain-informed variables intended to capture skill, reliability, consistency, and contextual adaptability-->
+<!--        within modern Formula One, EDA evaluates how these features behave collectively.-->
+<!--        This phase shifts the focus from construction to structure:-->
+<!--        identifying distributional properties, inter-feature relationships, and potential redundancies that may influence downstream multivariate modeling.</p>-->
+<!--      <p>All exploratory procedures are conducted at the driver–season level, preserving the modeling granularity established in prior stages.-->
+<!--        Distributional diagnostics assess symmetry, skewness, and variance behavior across transformed proportion-based variables,-->
+<!--        validating the effectiveness of logit and arcsine adjustments. Correlation matrices and variance inflation factor (VIF) analysis are used to examine dimensional overlap among performance metrics,-->
+<!--        ensuring that highly correlated constructs are understood before dimensionality reduction is applied.-->
+<!--        The objective is not aggressive feature elimination, but structural clarity — distinguishing independent performance dimensions from mechanically related indicators.-->
+<!--      </p>-->
+<!--      <p>-->
+<!--        EDA is guided by interpretability and modeling readiness. The goal is to confirm that the dataset captures multiple behavioral axes of driver performance-->
+<!--        — competitive strength, reliability, consistency, relative team contribution, and contextual adaptability —-->
+<!--        while maintaining statistical coherence.-->
+<!--      </p>-->
+<!--      <p>Feature definitions</p>-->
+<!--      <ul>-->
+<!--        <li>driverId: Driver identifier across all tables and raw datasets.</li>-->
+<!--        <li>year: Season year.</li>-->
+<!--        <li>ref: Driver’s name reference.</li>-->
+<!--        <li>constructor: Team identifier across all tables and raw datasets.</li>-->
+<!--        <li>constructorRef: Team’s name reference.</li>-->
+<!--        <li>DNF_rate: Proportion of races in which a driver did not finish during a season. Reliability indicator.</li>-->
+<!--        <li>position_delta: Average finish relative to starting position. Measures race execution and positional reliability.</li>-->
+<!--        <li>high_alt_success_rate: Proportion of high-altitude races in which a driver finished at or better than their seasonal average position. Contextual skill metric.</li>-->
+<!--        <li>team_avg_position: Constructor’s average finishing position during the season.</li>-->
+<!--        <li>dvt: Normalized measure of driver over- or under-performance relative to their teammate.</li>-->
+<!--        <li>finish_volatility: Standard deviation of finishing positions in a season. Consistency metric.</li>-->
+<!--        <li>years_active: Number of active seasons since 2014.</li>-->
+<!--        <li>top10: Proportion of races finishing inside the top 10 during a season. Competitive consistency indicator.</li>-->
+<!--        <li>avg_finish: Mean finishing position across completed races in a season.</li>-->
+<!--      </ul>-->
+<!--      <h4 class="has-text-light">Features summary statistics</h4>-->
+<!--      <div class="table-container">-->
+<!--      <table class="table is-striped is-hoverable is-fullwidth is-bordered">-->
+<!--        <thead>-->
+<!--          <tr>-->
+<!--            <th>Feature</th>-->
+<!--            <th>Count</th>-->
+<!--            <th>Mean</th>-->
+<!--            <th>Std</th>-->
+<!--            <th>Min</th>-->
+<!--            <th>25%</th>-->
+<!--            <th>50%</th>-->
+<!--            <th>75%</th>-->
+<!--            <th>Max</th>-->
+<!--          </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--          <tr>-->
+<!--            <td>DNF_rate</td>-->
+<!--            <td>244</td>-->
+<!--            <td>0.499</td>-->
+<!--            <td>0.298</td>-->
+<!--            <td>0.000</td>-->
+<!--            <td>0.227</td>-->
+<!--            <td>0.524</td>-->
+<!--            <td>0.737</td>-->
+<!--            <td>1.000</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>constructor</td>-->
+<!--            <td>244</td>-->
+<!--            <td>73.689</td>-->
+<!--            <td>87.868</td>-->
+<!--            <td>1.000</td>-->
+<!--            <td>5.000</td>-->
+<!--            <td>10.000</td>-->
+<!--            <td>131.000</td>-->
+<!--            <td>215.000</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>position_delta</td>-->
+<!--            <td>240</td>-->
+<!--            <td>1.081</td>-->
+<!--            <td>1.521</td>-->
+<!--            <td>-4.524</td>-->
+<!--            <td>0.060</td>-->
+<!--            <td>1.000</td>-->
+<!--            <td>2.124</td>-->
+<!--            <td>5.500</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>high_alt_success_rate</td>-->
+<!--            <td>230</td>-->
+<!--            <td>0.468</td>-->
+<!--            <td>0.326</td>-->
+<!--            <td>0.000</td>-->
+<!--            <td>0.271</td>-->
+<!--            <td>0.333</td>-->
+<!--            <td>0.667</td>-->
+<!--            <td>1.000</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>team_avg_position</td>-->
+<!--            <td>244</td>-->
+<!--            <td>9.565</td>-->
+<!--            <td>4.087</td>-->
+<!--            <td>1.921</td>-->
+<!--            <td>6.241</td>-->
+<!--            <td>9.976</td>-->
+<!--            <td>12.786</td>-->
+<!--            <td>17.025</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>dvt</td>-->
+<!--            <td>240</td>-->
+<!--            <td>-0.012</td>-->
+<!--            <td>0.164</td>-->
+<!--            <td>-0.701</td>-->
+<!--            <td>-0.078</td>-->
+<!--            <td>-0.003</td>-->
+<!--            <td>0.052</td>-->
+<!--            <td>0.603</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>finish_volatility</td>-->
+<!--            <td>240</td>-->
+<!--            <td>2.718</td>-->
+<!--            <td>0.949</td>-->
+<!--            <td>0.000</td>-->
+<!--            <td>2.148</td>-->
+<!--            <td>2.777</td>-->
+<!--            <td>3.426</td>-->
+<!--            <td>5.456</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>years_active</td>-->
+<!--            <td>244</td>-->
+<!--            <td>3.148</td>-->
+<!--            <td>2.915</td>-->
+<!--            <td>0.000</td>-->
+<!--            <td>1.000</td>-->
+<!--            <td>2.000</td>-->
+<!--            <td>5.000</td>-->
+<!--            <td>10.000</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>top10</td>-->
+<!--            <td>240</td>-->
+<!--            <td>0.550</td>-->
+<!--            <td>0.364</td>-->
+<!--            <td>0.000</td>-->
+<!--            <td>0.200</td>-->
+<!--            <td>0.606</td>-->
+<!--            <td>0.909</td>-->
+<!--            <td>1.000</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>avg_finish</td>-->
+<!--            <td>240</td>-->
+<!--            <td>9.603</td>-->
+<!--            <td>4.235</td>-->
+<!--            <td>1.273</td>-->
+<!--            <td>6.500</td>-->
+<!--            <td>9.934</td>-->
+<!--            <td>12.929</td>-->
+<!--            <td>18.222</td>-->
+<!--          </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--      </div>-->
+<!--      <p>All of the summary statistics are within a reasonable boundary, indicating no major outlier is present. High altitude success rate is probably the most skewed feature in our set, as its (median < mean by ~ 15%), along with years active which is skewed to the right as well (median < mean ~ 15%).</p>-->
 
-    </div>
+<!--      <div class="table-container">-->
+<!--        <table class="table is-striped is-hoverable is-fullwidth is-bordered">-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th>Feature</th>-->
+<!--              <th>Missing Values</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--            <tr><td>driverId</td><td>57</td></tr>-->
+<!--            <tr><td>year</td><td>11</td></tr>-->
+<!--            <tr><td>DNF_rate</td><td>98</td></tr>-->
+<!--            <tr><td>ref</td><td>57</td></tr>-->
+<!--            <tr><td>constructor</td><td>20</td></tr>-->
+<!--            <tr><td>constructorRef</td><td>20</td></tr>-->
+<!--            <tr><td>position_delta</td><td>199</td></tr>-->
+<!--            <tr><td>high_alt_success_rate</td><td>7</td></tr>-->
+<!--            <tr><td>team_avg_position</td><td>109</td></tr>-->
+<!--            <tr><td>dvt</td><td>240</td></tr>-->
+<!--            <tr><td>finish_volatility</td><td>231</td></tr>-->
+<!--            <tr><td>years_active</td><td>11</td></tr>-->
+<!--            <tr><td>top10</td><td>97</td></tr>-->
+<!--            <tr><td>avg_finish</td><td>224</td></tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--       <code>df.duplicated().sum()</code>-->
+<!--        <p></p>-->
+<!--       <code>Output: np.int64(0)</code>-->
+<!--      <p>No duplicates throughout the dataset is a good indication, and there are multiple unique values that are all completely sensical given the nature of the features.</p>-->
+
+<!--&lt;!&ndash;    Univariate analysis&ndash;&gt;-->
+<!--      <h3 class="has-text-light">Univariate analysis</h3>-->
+<!--      <p>Univariate analysis examines the distribution of individual features in the data to understand their central tendency, spread, and potential outliers. Histograms are used to visualize how values are distributed across each feature, while boxplots highlight medians, interquartile ranges, and extreme values. This process allows us to detect skewed distributions, unusual observations, and variability patterns, providing a foundation for later multivariate analyses and feature interpretation.</p>-->
+
+<!--      &lt;!&ndash;Histograms&ndash;&gt;-->
+<!--      <h4 class="has-text-light">Histograms</h4>-->
+<!--      <p>Histograms provide a visual summary of the distribution of each variable, allowing us to assess normality, skewness, dispersion, and concentration of values. In this subsection, each feature is evaluated in terms of its statistical shape and its coherence with real-world Formula 1 performance patterns. Particular attention is given to whether the distribution aligns with modeling assumptions, whether extreme values are structurally justified (e.g., limited race participation), and whether transformations or nonlinear methods may improve predictive performance.</p>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_histogram.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              DNF rate histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/position_delta_histogram.png" alt="Position delta histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Position delta histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_histogram.png" alt="High altitude success rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              High altitude success rate histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/team_avg_position_histogram.png" alt="Team average position histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Team average position histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/dvt_histogram.png" alt="DVT histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              DVT histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/finish_volatility_histogram.png" alt="Finish volatility histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Finish volatility histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_histogram.png" alt="Years active histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Years active histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_histogram.png" alt="Top 10 rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Top 10 rate histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/avg_finish_histogram.png" alt="Driver average finish histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Driver average finish histogram-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="content has-text-light">-->
+<!--        <ul>-->
+
+<!--          <li><span class="has-text-weight-semibold">DNF Rate:</span>-->
+<!--            The DNF rate is spread evenly throughout the dataset, with no clear pattern visible. This variable is not normally distributed, and although there is no apparent skew, transformations might normalize its distribution for regression modeling.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Position Delta:</span>-->
+<!--            Position delta has a clear pattern coherent with reality. Most drivers finish within a similar positional range throughout a season, while others over- or underperform. Drivers with few races can appear as outliers since limited observations heavily influence the metric. The distribution is approximately normal, which is favorable for regression modeling.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">High Altitude Success Rate:</span>-->
+<!--            There is no clear pattern and this variable is not normally distributed, as expected. Transformations may be useful, though nonlinear models may better contextualize this feature.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Team Average Position:</span>-->
+<!--            This variable is roughly normally distributed, with the average around the middle of the grid. The elevated count in the top five is sensible given the dominance of teams like Mercedes and Red Bull from 2014 onward.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">DVT:</span>-->
+<!--            This feature is normally distributed and coherent with its definition. Most teammate pairs perform similarly, with some clear over- and underperformers reflected in the near-symmetrical shape of the distribution.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Years Active:</span>-->
+<!--            This variable is heavily right-skewed, as expected. All drivers start at year zero, but only some sustain long careers. While skewed, other features provide context, and nonlinear models can handle this effectively.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Top 10 Rate:</span>-->
+<!--            This variable is not normally distributed. Many drivers consistently finish in the top 10, while others rarely do, creating heavy counts in the tails. Transformations may help, though nonlinear models naturally accommodate this pattern.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Average Finish:</span>-->
+<!--            This feature is approximately normally distributed. Many drivers cluster around the middle of the grid, reflecting consistent point-scoring without frequent top-10 finishes.-->
+<!--          </li>-->
+
+<!--        </ul>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash;Boxplots&ndash;&gt;-->
+<!--      <h4 class="has-text-light">Boxplots</h4>-->
+<!--      <p>Box plots complement histograms by providing a concise summary of central tendency, dispersion, and potential outliers for each variable. In this subsection, each feature is evaluated based on its median, interquartile range (IQR), skewness, and the presence of extreme values. This visualization allows for a clearer assessment of variability and distribution symmetry, while also highlighting whether unusual observations stem from genuine performance differences or structural characteristics such as limited race participation. Particular attention is given to how spread and outliers may influence modeling assumptions and whether the bounded nature of certain variables inherently limits extreme values.</p>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_boxplot.png" alt="DNF Rate boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              DNF rate boxplots-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/position_delta_boxplot.png" alt="Position delta boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Position delta boxplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_boxplot.png" alt="High altitude success rate boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              High altitude success rate boxplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/team_avg_position_boxplot.png" alt="Team average position boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Team average position boxplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/dvt_boxplot.png" alt="DVT boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              DVT boxplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/finish_volatility_boxplot.png" alt="Finish volatility boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Finish volatility boxplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_boxplot.png" alt="Years active boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Years active boxplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_boxplot.png" alt="Top 10 rate boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Top 10 rate boxplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/avg_finish_boxplot.png" alt="Driver average finish boxplot">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Driver average finish boxplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="content has-text-light">-->
+<!--        <ul>-->
+
+<!--          <li><span class="has-text-weight-semibold">DNF Rate:</span>-->
+<!--            The box plot for this feature confirms that there are no outliers present and that the data is spread widely relative to its range. DNF rate goes from 0 to 1, and the distance from IQ1 to IQ3 spans ~ 0.2 to ~ 0.7.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Position Delta:</span>-->
+<!--            This box plot shows that most drivers have a finish delta of around the median ( ~0-2 positions), with a couple outliers present for over and under performers.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">High Altitude Success Rate:</span>-->
+<!--            Similarly to dnf rate, there are no outliers present and this data is spread widely too in relation to its range, High altitude success rate goes from 0 to 1, and the distance from IQ1 to IQ3 spans ~ 0.3 to ~ 0.6. High-altitude races are few, so the rates are based on small denominators which makes this variable noisy.          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Team Average Position:</span>-->
+<!--            As discussed before for driver average finish, most of the data is concentrated around the middle of the grid where the before mentioned drivers commonly finish, the same reasoning applies for both metrics, although drivers have more variance than teams in this aspect, their histogram and box plot are expected to look similar.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">DVT:</span>-->
+<!--            We can see that most drivers are clustered in the middle range of the data  (~ -0.1 to 0.1), this is coherent with our histogram and the outliers in both tails represent the over and underperforming drivers.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Years Active:</span>-->
+<!--            The box plot highlights the skew of this variable as discussed before,  with most drivers in the 1 to 5 year range.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Top 10 Rate:</span>-->
+<!--            This box plot is spread very widely in relation to its range (0-1), IQ1 to IQ3 spans ~ 0.2 to ~ 0.9.-->
+<!--          </li>-->
+
+<!--          <li><span class="has-text-weight-semibold">Average Finish:</span>-->
+<!--            Same as team average, is clustered between those middle grid positions, consistent with the roughly symmetric shape observed in the histogram.-->
+<!--          </li>-->
+
+<!--        </ul>-->
+<!--        <p>It is worth noting that due to the mathematical structure of the following variables (dnf rate, high altitude success rate, team average position, top 10 rate, average finish) it is unlikely to see any outliers. These variables have a lower and upper bound, which reduces extreme value magnitudes.</p>-->
+<!--      </div>-->
+
+<!--      <h3 class="has-text-light">Outlier analysis</h3>-->
+<!--      <p>The nature of the outliers might be due to real noise in the data, or some driver's quality that is representative of their performance. The goal of this analysis is to comprehend the above mentioned fact and to manage this in a way that won't affect modeling.</p>-->
+
+<!--      <h4 class="has-text-light">Position delta summary</h4>-->
+
+<!--      <div class="columns is-centered mt-4">-->
+<!--        <div class="column is-5">-->
+<!--          <div class="table-container">-->
+<!--            <table class="table is-bordered is-striped is-hoverable has-text-centered">-->
+<!--              <tbody>-->
+<!--                <tr>-->
+<!--                  <th>Count</th>-->
+<!--                  <td>240.000000</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>Mean</th>-->
+<!--                  <td>1.081112</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>Std</th>-->
+<!--                  <td>1.520530</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>Min</th>-->
+<!--                  <td>-4.523810</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>25%</th>-->
+<!--                  <td>0.060033</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>50% (Median)</th>-->
+<!--                  <td>1.000000</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>75%</th>-->
+<!--                  <td>2.123950</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>Max</th>-->
+<!--                  <td>5.500000</td>-->
+<!--                </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <p>To identify outliers in the position delta variable, a standard deviation threshold approach was applied. Specifically, observations lying beyond ±2 standard deviations from the mean were classified as outliers. This method assumes approximate normality and flags values that deviate substantially from the central tendency of the distribution. By defining the upper threshold as μ+2σ and the lower threshold as-->
+<!--        μ−2σ, drivers are isolated based on whose average finishing deviation is unusually large relative to the overall dataset. These extreme values likely correspond to pronounced over- or under-performance across a season.</p>-->
+<!--      <div class="columns is-centered mt-4">-->
+<!--        <div class="column is-5">-->
+<!--          <div class="table-container">-->
+<!--            <table class="table is-bordered is-striped is-narrow is-hoverable has-text-centered is-size-6">-->
+<!--              <thead>-->
+<!--                <tr>-->
+<!--                  <th>Outlier values</th>-->
+<!--                </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--                <tr><td>4.3846</td></tr>-->
+<!--                <tr><td>5.5000</td></tr>-->
+<!--                <tr><td>-2.5263</td></tr>-->
+<!--                <tr><td>-2.2000</td></tr>-->
+<!--                <tr><td>-4.5238</td></tr>-->
+<!--                <tr><td>-2.0000</td></tr>-->
+<!--                <tr><td>-3.1111</td></tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <p>The outliers for position delta represent around 2.8% of the entire variable. Knowing this, we can look deeper into who these outliers are so that we can understand why their metric is extreme in relation to the mean.</p>-->
+<!--      <div class="columns is-centered mt-5">-->
+<!--        <div class="column is-10">-->
+<!--          <div class="table-container">-->
+<!--            <table class="table is-bordered is-striped is-hoverable is-size-8">-->
+<!--              <thead>-->
+<!--                <tr>-->
+<!--                  <th>Driver</th>-->
+<!--                  <th>Year</th>-->
+<!--                  <th>DNF Rate</th>-->
+<!--                  <th>Position delta</th>-->
+<!--                  <th>High Alt Success</th>-->
+<!--                  <th>Team Avg Pos</th>-->
+<!--                  <th>DVT</th>-->
+<!--                  <th>Finish Volatility</th>-->
+<!--                  <th>Years Active</th>-->
+<!--                  <th>Top 10</th>-->
+<!--                  <th>Avg Finish</th>-->
+<!--                  <th>Constructor</th>-->
+<!--                </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--                <tr>-->
+<!--                  <td>maldonado</td>-->
+<!--                  <td>2014</td>-->
+<!--                  <td>0.7895</td>-->
+<!--                  <td>4.3846</td>-->
+<!--                  <td>1.0000</td>-->
+<!--                  <td>13.0000</td>-->
+<!--                  <td>-0.0533</td>-->
+<!--                  <td>2.3332</td>-->
+<!--                  <td>0</td>-->
+<!--                  <td>0.0769</td>-->
+<!--                  <td>13.6923</td>-->
+<!--                  <td>lotus_f1</td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                  <td>brendon_hartley</td>-->
+<!--                  <td>2017</td>-->
+<!--                  <td>1.0000</td>-->
+<!--                  <td>5.5000</td>-->
+<!--                  <td>0.0000</td>-->
+<!--                  <td>11.1316</td>-->
+<!--                  <td>-0.2577</td>-->
+<!--                  <td>1.0000</td>-->
+<!--                  <td>0</td>-->
+<!--                  <td>0.0000</td>-->
+<!--                  <td>14.0000</td>-->
+<!--                  <td>toro_rosso</td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                  <td>kevin_magnussen</td>-->
+<!--                  <td>2019</td>-->
+<!--                  <td>0.7143</td>-->
+<!--                  <td>-2.5263</td>-->
+<!--                  <td>0.3333</td>-->
+<!--                  <td>13.0500</td>-->
+<!--                  <td>-0.0123</td>-->
+<!--                  <td>3.6213</td>-->
+<!--                  <td>5</td>-->
+<!--                  <td>0.2105</td>-->
+<!--                  <td>13.2105</td>-->
+<!--                  <td>haas</td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                  <td>perez</td>-->
+<!--                  <td>2021</td>-->
+<!--                  <td>0.2273</td>-->
+<!--                  <td>-2.2000</td>-->
+<!--                  <td>1.0000</td>-->
+<!--                  <td>4.5455</td>-->
+<!--                  <td>-0.4520</td>-->
+<!--                  <td>4.8208</td>-->
+<!--                  <td>7</td>-->
+<!--                  <td>0.8000</td>-->
+<!--                  <td>6.6000</td>-->
+<!--                  <td>red_bull</td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                  <td>hulkenberg</td>-->
+<!--                  <td>2023</td>-->
+<!--                  <td>0.5455</td>-->
+<!--                  <td>-4.5238</td>-->
+<!--                  <td>0.5000</td>-->
+<!--                  <td>14.5682</td>-->
+<!--                  <td>0.0194</td>-->
+<!--                  <td>2.6573</td>-->
+<!--                  <td>9</td>-->
+<!--                  <td>0.0476</td>-->
+<!--                  <td>14.2857</td>-->
+<!--                  <td>haas</td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                  <td>albon</td>-->
+<!--                  <td>2024</td>-->
+<!--                  <td>0.6923</td>-->
+<!--                  <td>-2.0000</td>-->
+<!--                  <td>0.0000</td>-->
+<!--                  <td>15.2609</td>-->
+<!--                  <td>0.1350</td>-->
+<!--                  <td>3.1559</td>-->
+<!--                  <td>5</td>-->
+<!--                  <td>0.2000</td>-->
+<!--                  <td>13.2000</td>-->
+<!--                  <td>williams</td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                  <td>kevin_magnussen</td>-->
+<!--                  <td>2023</td>-->
+<!--                  <td>0.6818</td>-->
+<!--                  <td>-3.1111</td>-->
+<!--                  <td>0.2500</td>-->
+<!--                  <td>14.5682</td>-->
+<!--                  <td>-0.0220</td>-->
+<!--                  <td>2.9229</td>-->
+<!--                  <td>9</td>-->
+<!--                  <td>0.1667</td>-->
+<!--                  <td>14.8889</td>-->
+<!--                  <td>haas</td>-->
+<!--                </tr>-->
+
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/finish_volatility_outliers.png" >-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Finish volatility outliers-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_outliers.png" >-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              DNF rate outliers-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--      <p>A driver with a low finish volatility (less than 1 std away from mean) and a high position delta indicates a real overperformance, this is a driver who constantly improves his starting position, hence their low volatility. Conversely, a driver with a high finish volatility (more than 1std away form mean) and a high could indicate small sample effect, or that he is just a very inconsistent driver.-->
+
+<!--As for DNF rate, we can see that at least half of the drivers with a high position delta have a high dnf rate, which is to be expected given the definition of position_delta, which is calculated for races where the driver FINISHED. With this in mind, we can infer that a driver with a low dnf rate (~ less than 1st away from mean) is a true over or under performer.-->
+
+<!--To discern whether or not the drivers with a high dnf rate are just noise, we have to look into how many races they raced. Arbitrarily defining it, A low amount of races in a season is  < 1/3 of races in a season.-->
+
+<!--If a driver races a low amount of races in a season, and their dnf rate is high, we can determine they're noise, if not, then it is a true signal of their performance.</p>-->
+<!--      <div class="container">-->
+<!--        <div class="columns is-multiline is-variable is-5">-->
+
+<!--          &lt;!&ndash; TABLE 1 &ndash;&gt;-->
+<!--          <div class="column is-6">-->
+<!--            <p class="has-text-weight-semibold mb-2">-->
+<!--              High DNF + Low Season Participation - Noise-->
+<!--            </p>-->
+
+<!--            <div class="table-container">-->
+<!--              <table class="table is-bordered is-striped is-narrow is-hoverable is-size-7">-->
+<!--                <thead>-->
+<!--                  <tr>-->
+<!--                    <th>ref</th>-->
+<!--                    <th>constructorRef</th>-->
+<!--                    <th>position_delta</th>-->
+<!--                    <th>DNF_rate</th>-->
+<!--                    <th>races_entered</th>-->
+<!--                    <th>year</th>-->
+<!--                  </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                  <tr>-->
+<!--                    <td>brendon_hartley</td>-->
+<!--                    <td>toro_rosso</td>-->
+<!--                    <td>5.5</td>-->
+<!--                    <td>1.0</td>-->
+<!--                    <td>4</td>-->
+<!--                    <td>2017</td>-->
+<!--                  </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; TABLE 2 &ndash;&gt;-->
+<!--          <div class="column is-6">-->
+<!--            <p class="has-text-weight-semibold mb-2">-->
+<!--              High DNF + High Season Participation - True Underperformance Signal-->
+<!--            </p>-->
+
+<!--            <div class="table-container">-->
+<!--              <table class="table is-bordered is-striped is-narrow is-hoverable is-size-7">-->
+<!--                <thead>-->
+<!--                  <tr>-->
+<!--                    <th>ref</th>-->
+<!--                    <th>constructorRef</th>-->
+<!--                    <th>position_delta</th>-->
+<!--                    <th>DNF_rate</th>-->
+<!--                    <th>races_entered</th>-->
+<!--                    <th>year</th>-->
+<!--                  </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                  <tr>-->
+<!--                    <td>maldonado</td>-->
+<!--                    <td>lotus_f1</td>-->
+<!--                    <td>4.384615</td>-->
+<!--                    <td>0.789474</td>-->
+<!--                    <td>19</td>-->
+<!--                    <td>2014</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>kevin_magnussen</td>-->
+<!--                    <td>haas</td>-->
+<!--                    <td>-2.526316</td>-->
+<!--                    <td>0.714286</td>-->
+<!--                    <td>21</td>-->
+<!--                    <td>2019</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>albon</td>-->
+<!--                    <td>williams</td>-->
+<!--                    <td>-2.000000</td>-->
+<!--                    <td>0.692308</td>-->
+<!--                    <td>13</td>-->
+<!--                    <td>2024</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>kevin_magnussen</td>-->
+<!--                    <td>haas</td>-->
+<!--                    <td>-3.111111</td>-->
+<!--                    <td>0.681818</td>-->
+<!--                    <td>22</td>-->
+<!--                    <td>2023</td>-->
+<!--                  </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; TABLE 3 &ndash;&gt;-->
+<!--          <div class="column is-6">-->
+<!--            <p class="has-text-weight-semibold mb-2">-->
+<!--              Low DNF + Low Participation - Small Sample (Uncertain Signal)-->
+<!--            </p>-->
+
+<!--            <div class="notification is-light is-size-7">-->
+<!--              NO DRIVERS IN HERE-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; TABLE 4 &ndash;&gt;-->
+<!--          <div class="column is-6">-->
+<!--            <p class="has-text-weight-semibold mb-2">-->
+<!--              Low DNF + High Participation - Strong Reliable Signal-->
+<!--            </p>-->
+
+<!--            <div class="table-container">-->
+<!--              <table class="table is-bordered is-striped is-narrow is-hoverable is-size-7">-->
+<!--                <thead>-->
+<!--                  <tr>-->
+<!--                    <th>ref</th>-->
+<!--                    <th>constructorRef</th>-->
+<!--                    <th>position_delta</th>-->
+<!--                    <th>DNF_rate</th>-->
+<!--                    <th>races_entered</th>-->
+<!--                    <th>year</th>-->
+<!--                  </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                  <tr>-->
+<!--                    <td>perez</td>-->
+<!--                    <td>red_bull</td>-->
+<!--                    <td>-2.20000</td>-->
+<!--                    <td>0.227273</td>-->
+<!--                    <td>22</td>-->
+<!--                    <td>2021</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>hulkenberg</td>-->
+<!--                    <td>haas</td>-->
+<!--                    <td>-4.52381</td>-->
+<!--                    <td>0.545455</td>-->
+<!--                    <td>22</td>-->
+<!--                    <td>2023</td>-->
+<!--                  </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>This graph is our key for understanding what is going on. The drivers with a high dnf rate and a low race season count are in the bottom right box, this is our noise as defined before. The drivers in the top right box are the drivers who raced more than 33% of the season yet have a high DNF rate, this is a clear signal of underperforming. The bottom left box drivers are those who raced only a few races yet finished in most of them, this is a signal of good performance. Where as drivers with low dnf rate and high amount of season races are signaling a true underperformance relative to their position delta.-->
+
+<!--Our DNF cutoff is set at 0.65, meaning that if a driver failed to finish more than 65% of their races in a season, we classify that season as high DNF. This gives us a clear and practical boundary between normal race attrition and seasons where reliability or incidents clearly dominated the results.-->
+
+<!--When we look at the tables, some cases match what we know from the sport. For example, Alonso in 2015 showing up in the high DNF high participation group makes sense because that McLaren season was extremely unreliable and full of retirements. Maldonado also appearing in the high DNF group is consistent with his known risk-heavy driving and incident record. On the other hand, drivers like Verstappen and Ricciardo appearing in the low DNF high participation group fits their reputation for consistency and strong race finishes over full seasons.</p>-->
+<!--      <p>Drivers with very low season participation-->
+<!--        produce unstable rate-based features. To reduce variance and improve statistical reliability, drivers below 33% season participation were excluded from the modeling dataset. Only one observation was dropped, the observation dropped only represents 0.04% of the dataset.-->
+
+<!--Removing high-DNF low-participation driver-season records produced only minor shifts in the overall feature distributions, confirming that the dataset is robust while eliminating structurally unreliable samples that could distort rate-based metrics</p>-->
+<!--      <p class="has-text-weight-semibold mb-2">-->
+<!--        DVT summary statistics-->
+<!--      </p>-->
+<!--      <div class="columns is-centered mt-4">-->
+<!--        <div class="column is-5">-->
+<!--          <div class="table-container">-->
+<!--            <table class="table is-bordered is-centered is-striped is-narrow is-hoverable is-size-6">-->
+
+<!--              <tbody>-->
+<!--                <tr>-->
+<!--                  <th>count</th>-->
+<!--                  <td>239.000000</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>mean</th>-->
+<!--                  <td>-0.011238</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>std</th>-->
+<!--                  <td>0.163886</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>min</th>-->
+<!--                  <td>-0.700905</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>25%</th>-->
+<!--                  <td>-0.077469</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>50%</th>-->
+<!--                  <td>-0.002083</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>75%</th>-->
+<!--                  <td>0.052343</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>max</th>-->
+<!--                  <td>0.603060</td>-->
+<!--                </tr>-->
+<!--              </tbody>-->
+<!--          </table>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>-->
+<!--      DVT shows clear outliers on both tails of the distribution. Most drivers cluster tightly around zero, indicating performance close to their team baseline. The extreme values correspond to strong over- and under-performance seasons.</p>-->
+<!--      <p>To identify outliers in DVT, just as before, a standard deviation threshold approach was applied. Specifically, observations lying beyond ±2 standard deviations from the mean were classified as outliers. This method assumes approximate normality and flags values that deviate substantially from the central tendency of the distribution. By defining the upper threshold as μ+2σ and the lower threshold as μ−2σ. The outliers represent 6% of the total sample variable. Knowing this, we can look deeper into who these outliers are so that we can understand why their metric is extreme in relation to the mean.</p>-->
+<!--      <div class="columns is-centered mt-4 is-variable is-5">-->
+<!--        &lt;!&ndash; OUTLIERS TABLE &ndash;&gt;-->
+<!--        <div class="column is-5">-->
+
+<!--          <p class="has-text-weight-semibold mb-1">-->
+<!--            Outliers-->
+<!--          </p>-->
+<!--          <p class="is-size-7 mb-3">-->
+<!--            DVT-0.34 (-34%) <br>-->
+<!--            DVT 0.32 (32%)-->
+<!--          </p>-->
+
+<!--          <div class="table-container">-->
+<!--            <table class="table is-bordered is-centered is-striped is-narrow is-hoverable is-size-6">-->
+<!--              <thead>-->
+<!--                <tr>-->
+<!--                  <th>Driver</th>-->
+<!--                  <th>Team</th>-->
+<!--                  <th>dvt</th>-->
+<!--                  <th>Year</th>-->
+<!--                </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--                <tr><td>bottas</td><td>mercedes</td><td>-0.366574</td><td>2018</td></tr>-->
+<!--                <tr><td>max_verstappen</td><td>red_bull</td><td>0.329840</td><td>2019</td></tr>-->
+<!--                <tr><td>bottas</td><td>mercedes</td><td>-0.345183</td><td>2020</td></tr>-->
+<!--                <tr><td>gasly</td><td>red_bull</td><td>-0.700905</td><td>2019</td></tr>-->
+<!--                <tr><td>hamilton</td><td>mercedes</td><td>0.415138</td><td>2020</td></tr>-->
+<!--                <tr><td>max_verstappen</td><td>red_bull</td><td>0.603060</td><td>2020</td></tr>-->
+<!--                <tr><td>max_verstappen</td><td>red_bull</td><td>0.594737</td><td>2021</td></tr>-->
+<!--                <tr><td>perez</td><td>red_bull</td><td>-0.452000</td><td>2021</td></tr>-->
+<!--                <tr><td>bottas</td><td>mercedes</td><td>-0.349693</td><td>2021</td></tr>-->
+<!--                <tr><td>perez</td><td>red_bull</td><td>-0.650000</td><td>2023</td></tr>-->
+<!--                <tr><td>max_verstappen</td><td>red_bull</td><td>0.533333</td><td>2023</td></tr>-->
+<!--                <tr><td>max_verstappen</td><td>red_bull</td><td>0.437500</td><td>2024</td></tr>-->
+<!--                <tr><td>perez</td><td>red_bull</td><td>-0.477273</td><td>2024</td></tr>-->
+<!--                <tr><td>de_vries</td><td>williams</td><td>0.353846</td><td>2022</td></tr>-->
+<!--                <tr><td>bearman</td><td>ferrari</td><td>-0.527273</td><td>2024</td></tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--        &lt;!&ndash; SELECTED DRIVER METRICS TABLE &ndash;&gt;-->
+<!--        <div class="column is-5">-->
+
+<!--          <p class="has-text-weight-semibold mb-3">-->
+<!--            Noisy drivers-->
+<!--          </p>-->
+
+<!--          <div class="table-container">-->
+<!--            <table class="table is-bordered is-centered is-striped is-narrow is-hoverable is-size-6">-->
+<!--              <thead>-->
+<!--                <tr>-->
+<!--                  <th>Driver</th>-->
+<!--                  <th>Team</th>-->
+<!--                  <th>Year</th>-->
+<!--                  <th>dvt</th>-->
+<!--                  <th>Races Entered</th>-->
+<!--                  <th>Max Races</th>-->
+<!--                </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--                <tr>-->
+<!--                  <td>gasly</td>-->
+<!--                  <td>red_bull</td>-->
+<!--                  <td>2019</td>-->
+<!--                  <td>-0.700905</td>-->
+<!--                  <td>21</td>-->
+<!--                  <td>21</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>de_vries</td>-->
+<!--                  <td>williams</td>-->
+<!--                  <td>2022</td>-->
+<!--                  <td>0.353846</td>-->
+<!--                  <td>1</td>-->
+<!--                  <td>22</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>bearman</td>-->
+<!--                  <td>ferrari</td>-->
+<!--                  <td>2024</td>-->
+<!--                  <td>-0.527273</td>-->
+<!--                  <td>1</td>-->
+<!--                  <td>13</td>-->
+<!--                </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>Post 2014 there has been 2 dominant teams, Mercedes and RedBull, with Hamilton and Verstappen as their main and most successful driver respectively. Knowing this information, the majority of these outliers make complete sense, and they are NOT noise by any means. Now, there are 3 drivers in here that do not fit that category.-->
+
+<!--      Nyck de vries raced only 1 time during the 2022 and Ollie bearman raced 3 times during the 2024 season. Logically we can argue that these observations are noisy and are not going to signal anything. As for Gasly further analysis is required.</p>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/noise_observations.png" alt="DVT noise">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              DVT by races entered-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>-->
+<!--Seeing this graph showcases the difference between noise and signals. Pierre Gasly had a terrible 2019 season which resulted in his -60% DVT, mean while the other two drivers have a super high and low DVT due to their limited races. Nyck de vries and Ollie Bearman will now be removed.</p>-->
+<!--      <p>In our outlier analysis, we focused on identifying extreme observations in the DVT and related performance metrics. Initially, using standard deviation thresholds, we flagged several drivers with unusually high or low DVT values. Upon closer inspection, most of the extreme values corresponded to dominant drivers from Mercedes and Red Bull, such as Hamilton and Verstappen, which are valid signals rather than noise. However, a few observations stood out as true noise: Nyck de Vries (2022) and Ollie Bearman (2024), who had very limited race participation, and a poor 2019 season for Pierre Gasly. Given their minimal participation, De Vries and Bearman’s DVT values were inflated and unlikely to provide meaningful signal for modeling. We retained Gasly’s data for further analysis, as it reflected a legitimate underperformance in a full season. These noisy observations were removed from the dataset to ensure the model focuses on meaningful patterns, while signal-driven extremes from main drivers were preserved.</p>-->
+
+<!--&lt;!&ndash;      Bivariate analysis&ndash;&gt;-->
+<!--      <h3 class="has-text-light">Bivariate analysis and collinearity</h3>-->
+<!--      <p>Moving on next it is important to understand how the features at hand correlate to our variable of interest (total points), and how they interact with each other. Understanding these relationships allows us to evaluate which features have strong linear associations with total points, which ones show weak or conditional effects, and which may only become informative when combined with other variables. Correlation analysis provides an initial signal of predictive strength and potential redundancy between features, while pairwise interaction analysis helps identify dependencies and context-driven behavior that simple univariate distributions cannot capture. Together, these checks guide both feature selection and model choice, especially when deciding between linear and non-linear modeling approaches.-->
+<!--      </p>-->
+
+<!--      <h4 class="has-text-light">Regression plots</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_regression.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              DNF rate vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/position_delta_regression.png" alt="Position delta histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Position delta vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_regression.png" alt="High altitude success rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              High altitude success rate vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/team_avg_position_regression.png" alt="Team average position histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Team average position vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/dvt_regression.png" alt="DVT histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              DVT vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/finish_volatility_regression.png" alt="Finish volatility histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Finish volatility vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_regression.png" alt="Years active histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Years active vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_regression.png" alt="Top 10 rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Top 10 rate vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/avg_finish_regression.png" alt="Driver average finish histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Driver average finish vs Total points-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="content has-text-light">-->
+<!--        <ul>-->
+<!--          <li><span class="has-text-weight-semibold">DNF Rate:</span>-->
+<!--            DNF rate has prominent negative correlation with total points, we can see that total points in a season heavily decrease with a curvature shape as dnf rate increases, most of the drivers with a high dnf rate (>= 65%) belong to the low scoring area. This relationship is non linear and shows a decay pattern.-->
+<!--          </li>-->
+<!--          <li><span class="has-text-weight-semibold">Position Delta:</span>-->
+<!--            No clear pattern is visible between position delta and total points. The relationship appears weak and noisy. Transformations may help reveal hidden structure, but it is also possible this feature has limited predictive power.-->
+<!--          </li>-->
+<!--          <li><span class="has-text-weight-semibold">High Altitude Success Rate:</span>-->
+<!--            High-altitude success rate is bounded between 0 and 1 and takes discrete values (EX 0, 0.33, 0.5, 0.66, 1.0) due to the small number of high-altitude races per season. This creates vertical clusters in the scatterplot. The relationship with total points is very noisy, suggesting limited predictive power, though transformations could reveal subtle patterns.-->
+<!--          </li>-->
+<!--          <li><span class="has-text-weight-semibold">Team Average Position:</span>-->
+<!--            Similarly to DNF rate but stronger, Team average position has a clear negative relationship with total points in a season. The lower the team average finish is, the lower a driver scores with almost certainty, majority of the drivers with around 100 points (top 10 almost guaranteed) have a team average starting position of <=10. This relationship is non linear and shows a decay pattern.-->
+<!--          </li>-->
+<!--          <li><span class="has-text-weight-semibold">DVT:</span>-->
+<!--            Dvt shows a somewhat linear relationship with total points having into consideration the visible spread of the data. Overall a higher dvt (>=.3) yields a higher total point, and a lower dvt (<= -.3) yields a lower point score. Majority of drivers fall in the (-.2 to .2) range, dvt measures deviation from teammate, therefore most drivers are clustered near 0 because teammates often finish close to each other. Nonetheless this variable might have some explanatory power, and a transformation might reveal something else about its structure.”-->
+<!--          </li>-->
+<!--          <li><span class="has-text-weight-semibold">Years Active:</span>-->
+<!--            There is no clear linear relationship between years active and total points. Drivers with fewer years are scattered across the points range, although drivers with over 8 years of experience do not score past the 300 point mark. This feature may be more informative in interaction with other features rather than alone.-->
+<!--          </li>-->
+<!--          <li><span class="has-text-weight-semibold">Top 10 Rate:</span>-->
+<!--            For Top 10 rate There is a strong positive relationship with total points, as expected. Drivers with a higher top 10 finish rate tend to accumulate more points. The plot shows a steady upward increase, although the relationship flattens near the extremes due to bounded values.-->
+<!--          </li>-->
+<!--          <li><span class="has-text-weight-semibold">Average Finish:</span>-->
+<!--            As expected, there is a negative relationship with total points and average finish. Lower average finish positions correspond to more points. The relationship is non linear and could benefit from a log or inverse transformation if needed for modeling.-->
+<!--          </li>-->
+<!--          <li><span class="has-text-weight-semibold"> Finish volatility</span>-->
+<!--            Finish volatility shows no clear pattern whatsoever, some drivers with high/low volatility are high scorers and some others are low scorers. Most drivers cluster within (2-4) positions. This suggests limited predictive power, though transformations might highlight subtle effects.-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+
+<!--      <h4 class="has-text-light">Correlations</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/features_heatmap.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Correlations heatmap-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>Focusing on the outcome variable total_points, several strong relationships appear that are consistent with both the scatter plot analysis and domain expectations. DNF rate shows a strong negative correlation (−0.79), indicating that drivers who fail to finish more frequently tend to accumulate fewer points. Similarly, average finish and team average position exhibit very strong negative correlations (−0.89 and −0.87), confirming that worse finishing positions are associated with lower season point totals. In contrast, top-10 rate shows a strong positive correlation (0.78), which is expected since frequent top-10 finishes directly contribute to higher points.-->
+
+<!--These results indicate that season outcome summary metrics are the dominant predictors of total points. However, these variables are also highly correlated with each other. Average finish, team average position, top-10 rate, and DNF rate form a tightly correlated cluster, reflecting that they measure closely related aspects of performance. Because of this, they should not be used together in the same linear model without regularization, and feature selection within this group will be necessary.-->
+
+<!--Outside of this performance cluster, most remaining engineered features show weak correlations, generally below |0.40|, suggesting limited multicollinearity among the secondary predictors. These variables may still contribute incremental predictive value when combined in multivariate models, particularly non-linear ones.</p>-->
+<!--      <p>Because the Formula 1 scoring system is directly determined by finishing position, summary performance metrics such as average finish and top-10 rate naturally show very strong correlations with total points. Rather than treating this as a modeling flaw or leakage, this analysis treats these relationships as structural properties of the domain. The objective is therefore not to avoid these variables, but to use them as anchors while examining which additional performance dimensions help explain remaining variance in total points. In particular, factors such as reliability, race craft, constructor context, and performance consistency are evaluated for their independent and interaction effects on scoring outcomes.-->
+
+<!--While some individual performance-oriented metrics appear weakly correlated with total points when evaluated in isolation, this does not imply low explanatory value. Many of these variables are not expected to have strong marginal correlations by themselves; their contribution is conditional and interaction-driven. When considered jointly, they provide complementary information that helps explain variability in point scoring beyond what summary finish metrics alone capture.</p>-->
+
+<!--      <h4 class="has-text-light">Pairplots</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-6">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/pairplots2.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Performance features pairplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/pairplots.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Context feature pairplot-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>The performance summary variables with strong negative correlations exhibit clear linear relationships with each other, consistent with their Pearson correlation coefficients. Finish volatility, however, displays a prominent inverted-U (n-shaped) pattern when paired with average finish (-0.02), top-10 rate (-0.09), and team average finish (-0.04). While these correlations are weak, the pairwise scatterplots reveal meaningful structure: drivers with low finish volatility cluster near the top and bottom of the finishing order, while mid-pack drivers tend to have higher volatility. In the case of top-10 rate, most drivers occupy a similar volatility range, but a few drivers at both extremes of the performance spectrum maintain low volatility, indicating a weaker conditional effect compared to the other two relationships.-->
+<!--      DVT and DNF rate exhibit a slight funnel-shaped pattern, with the spread narrowing for DNF rates above 0.30. DVT and position delta show no discernible pattern. Conversely, DNF rate and position delta show a positive linear trend, albeit with moderate scatter, suggesting a potential interaction effect between a driver’s reliability and their race-to-race positional changes.-->
+<!--      Finally, years active and high-altitude success rate show a noisy relationship, likely influenced by missing values in the high-altitude success metric, which limits interpretability.</p>-->
+
+<!--      <h4 class="has-text-light">Interaction analysis</h4>-->
+<!--      <p>The next stage of the analysis focuses on detecting interaction effects between predictors by examining how total points change across conditional levels of key performance variables. While earlier steps evaluated pairwise relationships and individual correlations with the target, many motorsport performance factors are not expected to act independently. Reliability, consistency, race craft, and team context often influence outcomes jointly rather than additively. To account for this, the analysis now evaluates how the relationship between one feature and total-->
+<!--        points varies when another feature is held at different levels. By stratifying predictors and comparing conditional target behavior, this step aims to identify non-additive structure and guide the inclusion of interaction terms and nonlinear specifications in the modeling phase.-->
+<!--        Pairwise predictor analysis reveals a consistent curved relationship between finish volatility and multiple performance summary metrics, indicating that volatility behaves differently across performance tiers. This structure motivates testing interaction terms between finish volatility and performance variables. Additional moderate structure is observed between DNF rate and position delta, suggesting a secondary interaction candidate, while DVT shows largely patternless relationships and is therefore a lower interaction priority.-->
+<!--      </p>-->
+<!--      <ul><span>Finish volatility is therefore a primary interaction candidate, as evidenced by the curved structures observed in the pairplots. The following interactions will be tested:</span>-->
+<!--        <li>finish_volatility × avg_finish</li>-->
+<!--        <li>finish_volatility × top10</li>-->
+<!--        <li>finish_volatility × team_avg_position</li>-->
+<!--      </ul>-->
+<!--      <ul><span>DNF rate is also considered an interaction candidate. Many of the engineered performance features were computed excluding DNF outcomes, which helps explain the structured but nonlinear shapes observed in their pairwise plots with DNF rate. This supports testing interactions where reliability modifies the effect of performance and consistency metrics:</span>-->
+<!--        <li>DNF rate × finish volatility</li>-->
+<!--        <li>DNF rate × DVT</li>-->
+<!--      </ul>-->
+
+<!--      <h4 class="has-text-light">Stratified scatter plots</h4>-->
+<!--      <p>Interactions will be evaluated by examining how the fitted relationship between a predictor and total points changes across stratified levels of a second predictor. If the fitted slopes differ meaningfully across these levels, this will be treated as evidence of a potential interaction effect; if slopes remain stable, an interaction term will not be pursued.</p>-->
+<!--      <h4 class="has-text-light">Finish volatility interactions</h4>-->
+<!--      <div class="columns is-centered mt-4">-->
+<!--        <div class="column is-5">-->
+<!--          <div class="table-container">-->
+<!--            <table class="table is-bordered is-centered is-striped is-narrow is-hoverable is-size-6">-->
+<!--              <p>Summary of finish volatility</p>-->
+<!--              <tbody>-->
+<!--                <tr>-->
+<!--                  <th>count</th>-->
+<!--                  <td>239.000000</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>mean</th>-->
+<!--                  <td>2.717374</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>std</th>-->
+<!--                  <td>0.951330</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>min</th>-->
+<!--                  <td>0.00000</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>25%</th>-->
+<!--                  <td>2.146358</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>50%</th>-->
+<!--                  <td>2.770103</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>75%</th>-->
+<!--                  <td>3.429536</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>max</th>-->
+<!--                  <td>5.456071</td>-->
+<!--                </tr>-->
+<!--              </tbody>-->
+<!--          </table>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>Finish volatility will be stratified into three balanced groups using quantile-based binning (low, medium, high). Although the variable is approximately normally distributed, this type of binning ensures more stable fitted slopes and more reliable visual comparison when evaluating interaction effects across strata.</p>-->
+<!--      <pre><code>fv_terciles = pd.qcut(df["finish_volatility"], q=3, labels=["Low", "Medium", "High"])</code></pre>-->
+<!--      <pre><code>Counts:-->
+<!--  finish_volatility terciles-->
+<!--  Low       80-->
+<!--  Medium    79-->
+<!--  High      80-->
+<!--  Name: count, dtype: int64</code></pre>-->
+
+<!--      <h4 class="has-text-light">Average finish and total points by finish volatility terciles</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/stratified_avg_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Slope of Average Finish vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/lowess_avg_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Lowess curve of Average Finish vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-9">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/scatter_avg_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Scatter plot Average Finish vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>Since the relationship between the predictor and total points is visibly nonlinear, interaction assessment is heavily based on the lowess curve. The relationship between average finish and total points is consistently negative across all finish volatility groups. However, slope differences are observed, with low-volatility drivers showing a steeper decline in total points as average finish worsens. Looking at the lowess curve the main difference is at the beginning of these lines, for which the lower and higher tercile drops more steeply, whereas the medium tercile is more gentle, although this difference is not very significant, it makes sense given the pairplot of these two variables that we saw before. This suggests a moderate interaction effect, where finish volatility slightly modifies the strength of the relationship between average finish and total points, although the overall direction remains stable.-->
+
+<!--      It is also worth noting that drivers with real low volatility score a lot more points than those with high medium and volatility, which is sensical and can be seen by the big chunk of drivers with low average finish and high total points in the plot above, this chunk is not visible for the other two terciles</p>-->
+
+<!--      <h4 class="has-text-light">Top 10 rate and total points by finish volatility terciles</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/stratified_top10_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Slope of Top 10 rate vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/lowess_top10_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Lowess curve of Top 10 rate vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-9">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/scatter_top10_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Scatter plot Top 10 rate vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>In this case it the difference between the difference terciles is bigger, yet is not very strong. Both have the same direction and a similar maginuted up a point where the three terciles of drivers intersect, (around 50% top 10 rate), after that point, we can see that low finish volatilty drivers shoot up drastically, this is most likely all those elite drivers that always score points, as shown by the vertical like at 100% top 10 rate, there is a pair of drivers with 100% top 10 rate and a very low point count, these are most likely drivers that finished near the 8-10 position range, where very low points are awarded. As for the other two terciles (Medium and High), they are pretty much parallel up to a separation point (around 70% top 10 rate), where drivers with a higher volatiluty score more points, these are probably drivers who have a couple races where they scored very high hence their total point score went up. Overall there is a moderate interaction between top 10 rate and finish volatility, this interaction is specially important for drivers with low volatility and high total points scored in a season.</p>-->
+
+<!--      <h4 class="has-text-light">Team average finish and total points by finish volatility terciles</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/stratified_team_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Slope of Team average finish vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/lowess_team_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Lowess curve of Team average finish vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-9">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/scatter_team_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Scatter plot Team average finish vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>The magnitude and slope of these lines are very similar, these lines are also parallel for the most part. It is overall very similar to the driver average finish plots, with a more pronounced slope for both low and high finish volatility drivers, with the main differnece being at the starting point, and then they get more tighter. There could be a moderate interaction effect.-->
+<!--        Out of the three plots, I believe that the main interaction is for top 10 rate, where is more evident and different between the terciles.</p>-->
+
+<!--      <h4 class="has-text-light">DNF rate and total points by finish volatility terciles</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/stratified_dnf_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Slope of DNF Rate vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/lowess_dnf_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Lowess curve of DNF Rate vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-9">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/scatter_dnf_fv.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Scatter plot DNF Rate vs Total Points by Finish Volatility Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>Across volatility terciles, the negative relationship between DNF rate and total points is again consistent in direction, but the differences between groups are more noticeable. At low DNF rates, drivers across all volatility levels score similarly high points. As DNF rate increases, the curves begin to separate.-->
+<!--        Low-volatility drivers appear more sensitive to DNFs, with a steeper decline in total points. In contrast, medium and high volatility drivers show a slightly more gradual reduction, suggesting that occasional strong performances may partially offset missed races. Overall, this reflects a moderate interaction, where volatility influences how strongly DNFs affect seasonal point totals.</p>-->
+
+<!--      <h4 class="has-text-light">DVT interactions</h4>-->
+<!--      <pre><code>df['dvt_terciles'] = pd.qcut(df['dvt'],q=3,labels=['low', 'medium', 'high'])</code></pre>-->
+<!--      <h4 class="has-text-light">DNF rate and total points by DVT terciles</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/stratified_dnf_dvt.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Slope of DNF Rate vs Total Points by DVT Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/lowess_dnf_dvt.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Lowess curve of DNF Rate vs Total Points by DVT Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-9">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/scatter_dnf_dvt.png" alt="DNF Rate histogram">-->
+<!--            <figcaption class="has-text-centered is-size-7 has-text-light mt-2">-->
+<!--              Scatter plot DNF Rate vs Total Points by DVT Terciles-->
+<!--            </figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>The differences between the DVT terciles are visible but not particularly strong. All three groups show the same overall pattern: as DNF rate increases, total points decrease. The direction of the relationship is consistent across terciles, and the slopes are fairly similar through much of the distribution. This suggests that DNFs negatively impact drivers regardless of their DVT level.-->
+<!--      However, some separation appears at moderate DNF rates. Drivers in the high DVT tercile tend to lose points slightly more sharply as DNFs increase, while the medium and high DVT groups decline more gradually. The initial gap between low and medium-high dvt drivers is big (~ 100 points), which indicates that this effect is specially significant for low dnf rate drivers. Overall there is a modest interaction: although the overall effect of DNFs is negative for everyone, its magnitude varies somewhat depending on DVT.</p>-->
+
+<!--      <h3 class="has-text-light">Interaction analysis using regression</h3>-->
+<!--      <p>To formally quantify the interaction between Top 1 rate and finish volatility on total points, I conducted an interaction analysis using regression modeling. While exploratory plots and LOWESS curves suggested that the effect of Top 10 rate on total points may vary across different levels of finish volatility, a regression model with an interaction term allows us to test this relationship statistically. By including both the main effects and the interaction between Top 1 rate and finish volatility (or terciles of volatility), we can assess whether the slopes differ significantly across volatility levels and provide a numerical estimate of the interaction magnitude.</p>-->
+<!--      <ul><span>Interactions to be tested</span>-->
+<!--        <li>finish_volatility × avg_finish</li>-->
+<!--        <li>finish_volatility × top10</li>-->
+<!--        <li>finish_volatility × team_avg_position</li>-->
+<!--        <li>DNF_rate × finish_volatility</li>-->
+<!--        <li>DNF_rate × DVT</li>-->
+<!--      </ul>-->
+
+<!--      <table class="table is-striped is-hoverable is-fullwidth">-->
+<!--        <thead>-->
+<!--          <tr>-->
+<!--            <th>Model</th>-->
+<!--            <th>Interaction Term</th>-->
+<!--            <th>Coefficient</th>-->
+<!--            <th>P-value</th>-->
+<!--            <th>Significance</th>-->
+<!--          </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--          <tr>-->
+<!--            <td>total_points ~ avg_finish * finish_volatility</td>-->
+<!--            <td>avg_finish:finish_volatility</td>-->
+<!--            <td>-0.7292</td>-->
+<!--            <td>0.4020</td>-->
+<!--            <td>Not significant</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>total_points ~ top10 * finish_volatility</td>-->
+<!--            <td>top10:finish_volatility</td>-->
+<!--            <td>18.1719</td>-->
+<!--            <td>0.1883</td>-->
+<!--            <td>Not significant</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>total_points ~ team_avg_position * finish_volatility</td>-->
+<!--            <td>team_avg_position:finish_volatility</td>-->
+<!--            <td>0.5438</td>-->
+<!--            <td>0.5566</td>-->
+<!--            <td>Not significant</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>total_points ~ DNF_rate * finish_volatility</td>-->
+<!--            <td>DNF_rate:finish_volatility</td>-->
+<!--            <td>-18.2316</td>-->
+<!--            <td>0.2366</td>-->
+<!--            <td>Not significant</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td>total_points ~ dvt * DNF_rate</td>-->
+<!--            <td>dvt:DNF_rate</td>-->
+<!--            <td>-379.0188</td>-->
+<!--            <td>0.0009</td>-->
+<!--            <td><strong>Significant</strong></td>-->
+<!--          </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--      <p>The regression analysis of interactions shows that finish volatility does not significantly modify the effect of average finish, top 10 rate, or team average position on total points. In other words, being more or less consistent across races does not substantially change how these performance metrics contribute to a driver’s point total. By contrast, the interaction DVT × DNF rate is statistically significant, indicating that a driver’s relative performance compared to their teammates (DVT) interacts with reliability. Drivers who outperform their teammates more strongly (high DVT) experience a larger loss in total points when they have DNFs, while drivers closer to or below their teammates’ performance (low DVT) are less affected. This highlights that exceptional drivers are particularly penalized by missed finishes, emphasizing that both skill relative to the team and race reliability are crucial for maximizing total points across a season.-->
+<!--        These findings emphasize that explicit interaction terms are most meaningful in linear frameworks, allowing us to quantify how the effect of one variable depends on another. In this case, the significant DVT × DNF rate interaction highlights a conditional relationship that can be leveraged for predictive modeling and interpretation. For models that capture nonlinearity and splits automatically, such as tree-based approaches, this step is less critical, but in linear or regularized regression, testing interactions provides a clear, interpretable measure of how combined features influence total points.</p>-->
+
+<!--      <h4 class="has-text-light">Transformations</h4>-->
+<!--      <pre><code>arcsin = np.arcsin(np.sqrt(plot_df[var]).clip(0, 1))-->
+<!--p = (plot_df[var] * plot_df["races_entered"] + 0.5) / (plot_df["races_entered"] + 1)-->
+<!--logit = logit_trans(p)</code></pre>-->
+<!--      <p>Logit and arcsine transformations were applied to several variables in the dataset to improve their statistical behavior and ensure meaningful comparability across features. Many of the engineered performance metrics—such as DNF rate, top-10 finish rate, and other success ratios—are expressed as proportions bounded between 0 and 1. Variables of this type often exhibit strong skewness, compression near the boundaries, and non-constant variance, which can distort correlation analysis and multivariate methods. To address this, two complementary transformations were used. The logit transformation was applied to selected rates (e.g., DNF rate, top-10 rate, high-altitude success rate, and years active expressed proportionally) to map bounded probabilities onto the real number line, allowing extreme values near 0 or 1 to be represented more symmetrically and making differences between drivers more interpretable. In parallel, the arcsine square-root transformation was used for certain proportion variables because it stabilizes variance and spreads values more evenly across the distribution, particularly when proportions are clustered near the boundaries. Using both transformations provides flexibility in handling different types of rate-based features while improving distributional symmetry, reducing skewness, and creating a more stable feature space for subsequent exploratory analysis, clustering, and dimensionality reduction.</p>-->
+
+<!--      <h5 class="has-text-light">Transformations on high altitude success rate</h5>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_arcsin_hist.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_arcsin_box.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_arcsin_reg.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_logit_hist.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_logit_box.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/high_alt_sucess_rate_logit_reg.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <h5 class="has-text-light">Transformations on DNF Rate</h5>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_arcsin_hist.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_arcsin_box.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_arcsin_reg.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_logit_hist.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_logit_box.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/DNF_rate_logit_reg.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <h5 class="has-text-light">Transformations on Top 10 rate</h5>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_arcsin_hist.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_arcsin_box.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_arcsin_reg.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_logit_hist.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_logit_box.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/top10_logit_reg.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <h5 class="has-text-light">Transformations on Years active</h5>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_arcsin_hist.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_arcsin_box.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_arcsin_reg.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_logit_hist.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_logit_box.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="column is-4">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/years_active_logit_reg.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <p>The transformations primarily improved the distributions of top 10 rate and DNF rate, which originally had reasonably good distributions. This came at a slight cost of interpretability. The relationship with the response variable (total points) became more apparent — although not strictly linear, the transformed variables reveal a clear curved pattern that was harder to see in the raw proportions. Both arcsine-sqrt and logit transformations produced similar effects, with no obvious “winner” in terms of distribution normalization. However, because interpretability is important in practice, the logit transformation is preferred. Its values can be interpreted in terms of log-odds, which is often easier to explain and communicate than arcsine-sqrt units.-->
+<!--        For the remaining features, neither the logit nor the arcsine-sqrt transformations improved their distributions. In fact, some extreme values at the ends became even more pronounced. This indicates that these features have inherently nonlinear relationships with the response variable (total points), and applying linear transformations alone won’t make them suitable for a standard linear model. Therefore, to make effective use of these variables without “breaking” the model assumptions, a nonlinear modeling approach — such as decision trees, random forests, gradient boosting, or spline-based regression — will likely be necessary. These methods can capture complex, nonlinear patterns without requiring the predictors to be normally distributed or linearly related to the response.</p>-->
+<!--      <p>It is important to note that for computing the logit transformation I added 0.5 to the numerator when applying the logit to proportions to prevent infinities for values of 0 or 1, creating a small, safe adjustment that stabilizes the transformation without significantly altering the data.</p>-->
+
+<!--      <h4 class="has-text-light">Correlation function for Logit DNF rate and Top 10 rate against all features</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-5">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/trans_correlations.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <p>Correlations haven't changed significantly, just a couple of tenths.</p>-->
+
+<!--      <h4 class="has-text-light">Pairplots including transformed features</h4>-->
+<!--      <div class="columns is-centered is-multiline mt-5">-->
+<!--        <div class="column is-6">-->
+<!--          <figure class="image">-->
+<!--            <img src="/static/showcase/images/F1/eda_images/trans_pairplots.png" alt="DNF Rate histogram">-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <h3 class="has-text-light">Missing values</h3>-->
+<!--      <ul>-->
+<!--        <li>DNF_rate: 0</li>-->
+<!--        <li>position_delta: 4</li>-->
+<!--        <li>high_alt_success_rate: 14</li>-->
+<!--        <li>team_avg_position: 0</li>-->
+<!--        <li>dvt: 4</li>-->
+<!--        <li>finish_volatility: 4</li>-->
+<!--        <li>years_active: 0</li>-->
+<!--        <li>top10: 4</li>-->
+<!--        <li>avg_finish: 4</li>-->
+<!--        <li>total_points: 0</li>-->
+<!--        <li>logit_dnf: 0</li>-->
+<!--        <li>logit_top10: 4</li>-->
+
+<!--      </ul>-->
+<!--      <p>Some features in the dataset had missing values, including driver performance metrics like position_delta and avg_finish. To handle these, we applied median imputation for numeric variables, which is robust to outliers and preserves the central tendency of the data, and mode imputation for categorical/tercile features to maintain the most common category. This ensures that the dataset is complete and suitable for clustering and other exploratory analyses without introducing bias from extreme values or arbitrary fill-ins.</p>-->
+<!--      <pre><code>num_cols = ["position_delta", "dvt", "finish_volatility", "top10","avg_finish", "high_alt_sucess_rate", "logit_top10"]-->
+<!--num_imputer = SimpleImputer(strategy="median")-->
+<!--df[num_cols] = sklearn.impute.SimpleImputer.num_imputer.fit_transform(df[num_cols])</code></pre>-->
+
+<!--      <p>Overall, the exploratory data analysis has characterized the distributions, relationships, and redundancies among the driver- and team-oriented features. Key transformations, including logit and arcsine-square-root, were applied to normalize proportion-based metrics like DNF rate and top-10 rate, enhancing interpretability and revealing clearer patterns with respect to performance. Correlation analysis highlighted potential multicollinearity, allowing us to identify which features provide unique information versus those that may be redundant. Missing values were carefully handled through median and mode imputation, ensuring a complete dataset without introducing bias or distortion.-->
+
+<!--With this clean and transformed dataset, we are now prepared to apply unsupervised techniques such as clustering and principal component analysis (PCA) in a separate notebook. These methods will allow us to uncover natural groupings of drivers and seasons, explore latent dimensions of performance, and identify patterns across teams and experience levels—all without relying on target variables. Together, the EDA provides a solid foundation for interpretable, data-driven insights into driver performance and sets the stage for further analytical exploration.</p>-->
+<!--    </div>-->
+</div>
+
     {% if next_section %}
       <a href="{% url 'section_detail' project.slug next_section.slug %}"
          class="has-text-link">
